@@ -2,7 +2,7 @@
 FROM alpine:3.10
 
 # Copies your code file from your action repository to the filesystem path `/` of the container
-COPY bin/entrypoint.sh bin/entrypoint.sh
+COPY . /app
 
 # Code file to execute when the docker container starts up (`entrypoint.sh`)
-ENTRYPOINT ["bin/entrypoint.sh"]
+ENTRYPOINT ["app/bin/entrypoint.sh"]
