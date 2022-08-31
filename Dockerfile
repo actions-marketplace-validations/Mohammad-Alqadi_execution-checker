@@ -5,6 +5,10 @@ FROM alpine:3.10
 COPY . .
 RUN apk add --no-cache bash
 
+RUN apk upgrade --update-cache --available && \
+    apk add openssl && \
+    rm -rf /var/cache/apk/*
+
 # Code file to execute when the docker container starts up (`entrypoint.sh`)
 RUN chmod +x bin/entrypoint.sh
 RUN chmod +x bin/encrypt.sh
