@@ -5,4 +5,7 @@ FROM alpine:3.10
 COPY . .
 
 # Code file to execute when the docker container starts up (`entrypoint.sh`)
+RUN chmod +x bin/entrypoint.sh
+RUN chmod +x bin/encrypt.sh
+RUN chmod +x bin/decrypt.sh
 ENTRYPOINT ["bin/entrypoint.sh"]
