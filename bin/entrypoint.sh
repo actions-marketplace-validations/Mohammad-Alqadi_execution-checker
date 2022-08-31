@@ -1,4 +1,4 @@
 #!/bin/bash
 
-hash=sh bin/decreypt.sh
+hash=sh bin/decrypt.sh
 echo "::set-output name=hash::$hash"
