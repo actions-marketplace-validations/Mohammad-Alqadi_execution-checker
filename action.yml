@@ -1,0 +1,21 @@
+name: main
+description: encrypt the hash ID
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.Hash }}
+    - ${{ inputs.Log_status }}
+inputs:
+    Hash:
+      description: 'The hash ID'
+      required: true
+    Log_status:
+      description: 'The status of git'
+      required: true
+outputs:
+  Encrypted:
+    description: 'Encrypted hash ID'
+branding:
+  icon: 'shield'  
+  color: 'blue'
