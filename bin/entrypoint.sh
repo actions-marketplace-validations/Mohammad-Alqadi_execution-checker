@@ -4,4 +4,4 @@ hash="$1"
 status="$2"
 
 encrypted=$(sh bin/encrypt.sh "$hash" "$status")
-echo "::set-output name=Encrypted::$encrypted"
+echo "::set-output name=Encrypted::"$encrypted""
