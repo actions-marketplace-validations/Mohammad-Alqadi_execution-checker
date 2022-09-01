@@ -1,12 +1,12 @@
 #!/bin/bash
 
 hash="$1"
-status="$2"
+echo "$2" > status.txt
+tag="$(tail -n 1 status.txt)"
 
 to_pass="nothing to commit, working tree clean"
-output="ss"
 
-if [ "$status" = "$to_pass" ]; then
+if [ "$tag" = "$to_pass" ]; then
     echo "$hash" | openssl pkeyutl -inkey key.txt -encrypt >output.bin
     output=`cat output.bin`
 else
