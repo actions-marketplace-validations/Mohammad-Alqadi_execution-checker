@@ -1,8 +1,10 @@
 #!/bin/sh -l
 
-encrypted=$(sh bin/decrypt.sh)
 hash=$1
 status=$2
+
+/bin/encrypt.sh "$hash" "$status"
+encrypted=$(sh bin/encrypt.sh)
 echo "::set-output name=Encrypted::$encrypted"
 echo "hash = $hash"
 echo "status = $status"
