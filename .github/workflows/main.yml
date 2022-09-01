@@ -12,8 +12,7 @@ jobs:
         uses: ./
         with:
           Hash: 'dee074d84865621980b0140a87b13e16b2222449'
-          Log_status: "On branch main
-            Your branch is ahead of 'origin/main' by 1 commit."
+          Log_status: "On branch main \n Your branch is ahead of 'origin/main' by 1 commit."
       - name: Get the output Encrypted
         run: echo "${{ steps.Demo.outputs.Encrypted }}"
 
