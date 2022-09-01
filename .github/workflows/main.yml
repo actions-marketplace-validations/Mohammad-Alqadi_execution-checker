@@ -11,7 +11,16 @@ jobs:
         id: Demo
         uses: ./
         with:
-          Hash: 'Mona the Octocat'
+          Hash: 'dee074d84865621980b0140a87b13e16b2222449'
           Log_status: 'Done'
       - name: Get the output Encrypted
         run: echo "Encrypted ; ${{ steps.Demo.outputs.Encrypted }}"
+
+      - name: Demo_1
+        id: Demo_1
+        uses: ./
+        with:
+          Hash: 'dee074d84865621980b0140a87b13e16b2222449'
+          Log_status: 'nothing to commit, working tree clean'
+      - name: Get the output Encrypted 1
+        run: echo "Encrypted ; ${{ steps.Demo_1.outputs.Encrypted }}"  
