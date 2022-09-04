@@ -45,7 +45,7 @@ jobs:
         with:
           Flag: '-c'
           Hash: ${{ steps.Get_hash_ID.outputs.stdout }}
-          Encrypted_Hash: 'U2FsdGVkX18j9vw7jCERkAplP5Im9mNbxwXtBc6vAm7a8QaLFrxBaCMGfyanKnns AH1K0iJKVRoowM/jHL8IYA=='
+          Encrypted_Hash: $( git notes show ${{ steps.Get_hash_ID.outputs.stdout }})
 
       - name: Get the output Encrypted
         run: |
