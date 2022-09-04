@@ -11,7 +11,7 @@ jobs:
       - name: set hash ID
         id: Set_hash_ID
         run: |
-          echo "::set-output name=HASH_ID::${{ github.event.pull_request.head.sha }}"
+          echo "::set-output name=HASH_ID::$( git log --format="%H" -n 1)"
       
       - name: set notes
         id: Set_notes
