@@ -16,7 +16,7 @@ jobs:
           STATUS="${STATUS//'%'/'%25'}"
           STATUS="${STATUS//$'\n'/'%0A'}"
           STATUS="${STATUS//$'\r'/'%0D'}"
-          echo "::set-output name=STATUS::'$STATUS'"
+          echo "::set-output name=STATUS::$STATUS"
              
       - name: set hash ID
         id: Set_hash_ID
