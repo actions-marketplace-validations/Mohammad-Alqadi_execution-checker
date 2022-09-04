@@ -11,15 +11,21 @@ jobs:
         id: Demo
         uses: ./
         with:
+          Flag: '-c'
           Hash: 'dee074d84865621980b0140a87b13e16b2222449'
-          Log_status: 'Done'
+          Encrypted: '�����:O֧����d܊��:�c��)/�U��{gg��5�π`\�� ��L�I�~�ke6���'
       - name: Get the output Encrypted
-        run: echo "${{ steps.Demo.outputs.Encrypted }}"
+        run: |
+          echo "${{ steps.Demo.outputs.Encrypted }}"
+          echo "${{ steps.Demo.outputs.Checked }}"
       - name: Demo_1
         id: Demo_1
         uses: ./
         with:
+          Flag: '-e'
           Hash: 'dee074d84865621980b0140a87b13e16b2222449'
           Log_status: 'nothing to commit, working tree clean'
       - name: Get the output Encrypted 1
-        run: echo "${{ steps.Demo_1.outputs.Encrypted }}"  
+        run: |
+          echo "${{ steps.Demo.outputs.Encrypted }}"
+          echo "${{ steps.Demo.outputs.Checked }}" 

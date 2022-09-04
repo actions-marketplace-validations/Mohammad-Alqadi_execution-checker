@@ -7,15 +7,23 @@ runs:
     - ${{ inputs.Hash }}
     - ${{ inputs.Log_status }}
 inputs:
+    Flag:
+      description: '-c to check, -e to encrypt'
+      required: true
     Hash:
       description: 'The hash ID'
       required: true
     Log_status:
       description: 'The status of git'
-      required: true
+      required: false
+    Encrypted:
+      description: 'The Encrypted hash ID'
+      required: false  
 outputs:
   Encrypted:
     description: 'Encrypted hash ID'
+  Checked:
+    description: 'Boolean checked if the hash ID matches the provided encrypted hash ID'  
 branding:
   icon: 'shield'  
   color: 'blue'
