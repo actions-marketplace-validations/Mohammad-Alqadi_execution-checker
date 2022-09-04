@@ -20,7 +20,7 @@ jobs:
           echo "::set-output name=NOTES::$( git notes show ${{ steps.Set_hash_ID.outputs.HASH_ID }})"
   
       - name: execution-checker-1
-        uses: moh-alqadi-op/execution-checker@v3
+        uses: moh-alqadi-op/execution-checker@v4
         id: Demo
         with:
           Flag: '-c'
