@@ -4,8 +4,10 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
+    - ${{ inputs.Flag }}
     - ${{ inputs.Hash }}
     - ${{ inputs.Log_status }}
+    - ${{ inputs.Encrypted_Hash }}
 inputs:
     Flag:
       description: '-c to check, -e to encrypt'
