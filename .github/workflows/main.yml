@@ -16,6 +16,7 @@ jobs:
       - name: set notes
         id: Set_notes
         run: |
+          git fetch origin "refs/notes/*:refs/notes/*"
           echo "::set-output name=NOTES::$( git notes show ${{ steps.Set_hash_ID.outputs.HASH_ID }})"
   
       - name: execution-checker-1
