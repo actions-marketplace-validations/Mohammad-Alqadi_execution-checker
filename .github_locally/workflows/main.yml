@@ -1,0 +1,33 @@
+on: [push]
+
+jobs:
+  Demo_job:
+    runs-on: ubuntu-latest
+    name: Demo
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: set status
+        id: set_status
+        run: |
+          git config --global --add safe.directory '*'
+          echo "::set-output name=STATUS::$(git status)"
+             
+      - name: set hash ID
+        id: Set_hash_ID
+        run: |
+          echo "::set-output name=HASH_ID::$( git log --format="%H" -n 1)"
+      
+      - name: execution-checker 1
+        uses: moh-alqadi-op/execution-checker@v3
+        id: execution_checker_1
+        with:
+          Flag: '-e'
+          Hash: ${{ steps.Set_hash_ID.outputs.HASH_ID }}
+          Log_status: ${{ steps.set_status.outputs.STATUS }}
+      
+      - name: Local_hash_ID
+        id: Local_hash_ID
+        run: |
+          git notes add -f -m "${{ steps.execution_checker_1.outputs.Encrypted }}"
