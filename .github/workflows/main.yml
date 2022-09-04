@@ -13,12 +13,9 @@ jobs:
         with:
           Flag: '-c'
           Hash: 'dee074d84865621980b0140a87b13e16b2222449'
-          Encrypted_Hash: 'U2FsdGVkX1/V/1m+OMjPjx+xiP60Ld0maoHzHNjgqvWxX5IkB0TzEXmX6MwvBocI c47sXLhWNmbs/mzHaCpmfA=='
+          Encrypted_Hash: 'U2FsdGVkX18j9vw7jCERkAplP5Im9mNbxwXtBc6vAm7a8QaLFrxBaCMGfyanKnns AH1K0iJKVRoowM/jHL8IYA=='
       - name: Get the output Encrypted
         run: |
-          echo "${{ steps.Demo.inputs.Flag }}"
-          echo "${{ steps.Demo.inputs.Hash }}"
-          echo "${{ steps.Demo.inputs.Encrypted_Hash }}"
           echo "${{ steps.Demo.outputs.Encrypted }}"
           echo "${{ steps.Demo.outputs.Checked }}"
       - name: Demo_1
@@ -30,5 +27,5 @@ jobs:
           Log_status: 'nothing to commit, working tree clean'
       - name: Get the output Encrypted 1
         run: |
-          echo "${{ steps.Demo.outputs.Encrypted }}"
-          echo "${{ steps.Demo.outputs.Checked }}" 
+          echo "${{ steps.Demo_1.outputs.Encrypted }}"
+          echo "${{ steps.Demo_1.outputs.Checked }}" 

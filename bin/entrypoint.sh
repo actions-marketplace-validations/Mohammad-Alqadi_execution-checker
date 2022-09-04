@@ -14,7 +14,7 @@ encrypt_given_hash() {
 while getopts "ec:" opt; do
   case $opt in
     c)
-      check_if_match "$hash" "$3"
+      check_if_match "$hash" "$4"
       ;;
     e)
       encrypt_given_hash "$hash" "$3"
