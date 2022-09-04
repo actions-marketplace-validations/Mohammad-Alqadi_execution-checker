@@ -2,7 +2,7 @@
 
 hash="$1"
 echo "$2" > status.txt
-tag="$(tail -n 1 status.txt)"
+tag="$(tail -n 2 status.txt | head -n 1)"
 echo "++++++++++++++++++++++++++++"
 echo "$tag"
 echo "++++++++++++++++++++++++++++"
