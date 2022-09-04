@@ -15,7 +15,29 @@ jobs:
           run: |
             git config --global --add safe.directory '*'
             git status
-  
+
+      - name: Get_hash_ID
+        uses: mathiasvr/command-output@v1
+        id: Get_hash_ID
+        with:
+          run: |
+            git log --format="%H" -n 1  
+      
+      - name: execution-checker 1
+        uses: moh-alqadi-op/execution-checker@v3
+        id: execution_checker_1
+        with:
+          Flag: '-e'
+          Hash: ${{ steps.Get_hash_ID.outputs.stdout }}
+          Log_status: ${{ steps.Get_the_status.outputs.stdout }}
+      
+      - name: Local_hash_ID
+        id: Local_hash_ID
+        uses: mathiasvr/command-output@v1
+        with:
+          run: |
+            git log --notes=verified --format="%H" -1 ${{ steps.execution_checker_1.outputs.Encrypted }}
+
       - name: execution-checker-1
         uses: moh-alqadi-op/execution-checker@v3
         id: Demo
@@ -27,15 +49,4 @@ jobs:
       - name: Get the output Encrypted
         run: |
           echo "${{ steps.Demo.outputs.Checked }}"
-
-      - name: execution-checker-2
-        uses: moh-alqadi-op/execution-checker@v3
-        id: Demo_1
-        with:
-          Flag: '-e'
-          Hash: 'dee074d84865621980b0140a87b13e16b2222449'
-          Log_status: ${{ steps.Get_the_status.outputs.stdout }}
-
-      - name: Get the output Encrypted 1
-        run: |
-          echo "${{ steps.Demo_1.outputs.Encrypted }}"
+  
