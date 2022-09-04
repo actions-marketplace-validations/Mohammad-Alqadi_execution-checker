@@ -12,7 +12,11 @@ jobs:
         id: set_status
         run: |
           git config --global --add safe.directory '*'
-          echo "::set-output name=STATUS::$(git status)"
+          STATUS="$(git status)" 
+          STATUS="${STATUS//'%'/'%25'}"
+          STATUS="${STATUS//$'\n'/'%0A'}"
+          STATUS="${STATUS//$'\r'/'%0D'}"
+          echo "::set-output name=STATUS::'$STATUS'"
              
       - name: set hash ID
         id: Set_hash_ID
@@ -24,8 +28,8 @@ jobs:
         id: execution_checker_1
         with:
           Flag: '-e'
-          Hash: ${{ steps.Set_hash_ID.outputs.HASH_ID }}
-          Log_status: ${{ steps.set_status.outputs.STATUS }}
+          Hash: "${{ steps.Set_hash_ID.outputs.HASH_ID }}"
+          Log_status: '${{ steps.set_status.outputs.STATUS }}'
       
       - name: Local_hash_ID
         id: Local_hash_ID

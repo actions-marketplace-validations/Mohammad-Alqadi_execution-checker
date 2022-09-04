@@ -25,7 +25,7 @@ jobs:
         with:
           Flag: '-c'
           Hash: ${{ steps.Set_hash_ID.outputs.HASH_ID }}
-          Encrypted_Hash: ${{ steps.Set_notes.outputs.NOTES }}
+          Encrypted_Hash: '${{ steps.Set_notes.outputs.NOTES }}'
 
       - name: Get the output Encrypted
         run: |
