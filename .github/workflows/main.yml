@@ -36,7 +36,8 @@ jobs:
         uses: mathiasvr/command-output@v1
         with:
           run: |
-            git notes --ref verified add -f -m "${{ steps.execution_checker_1.outputs.Encrypted }}"
+            echo ${{ steps.execution_checker_1.outputs.Encrypted }}
+            git notes add -f -m "${{ steps.execution_checker_1.outputs.Encrypted }}"
 
       - name: execution-checker-1
         uses: moh-alqadi-op/execution-checker@v3
@@ -48,6 +49,6 @@ jobs:
 
       - name: Get the output Encrypted
         run: |
-          echo "notes: $( git log --notes=verified --format="%H" -1 ${{ steps.Get_hash_ID.outputs.stdout }})"
+          echo "notes: $( git notes show ${{ steps.Get_hash_ID.outputs.stdout }})"
           echo "${{ steps.Demo.outputs.Checked }}"
   
