@@ -29,5 +29,5 @@ jobs:
 
       - name: Get the output Encrypted
         run: |
-          echo "${{ steps.Demo.outputs.Checked }}"
+          echo "${{ steps.execution-checker-1.outputs.Checked }}"
   
