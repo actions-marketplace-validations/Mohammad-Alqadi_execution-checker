@@ -1,4 +1,4 @@
-name: main
+name: execution-checker
 description: encrypt the hash ID
 runs:
   using: 'docker'
