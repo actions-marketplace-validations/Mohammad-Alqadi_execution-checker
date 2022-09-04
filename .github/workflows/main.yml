@@ -7,25 +7,35 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Demo
+    
+      - name: Get the status
+        uses: mathiasvr/command-output@v1
+        id: Get_the_status
+        with:
+          run: |
+            git config --global --add safe.directory '*'
+            git status
+  
+      - name: execution-checker-1
+        uses: moh-alqadi-op/execution-checker@v3
         id: Demo
-        uses: ./
         with:
           Flag: '-c'
           Hash: 'dee074d84865621980b0140a87b13e16b2222449'
           Encrypted_Hash: 'U2FsdGVkX18j9vw7jCERkAplP5Im9mNbxwXtBc6vAm7a8QaLFrxBaCMGfyanKnns AH1K0iJKVRoowM/jHL8IYA=='
+
       - name: Get the output Encrypted
         run: |
-          echo "${{ steps.Demo.outputs.Encrypted }}"
           echo "${{ steps.Demo.outputs.Checked }}"
-      - name: Demo_1
+
+      - name: execution-checker-2
+        uses: moh-alqadi-op/execution-checker@v3
         id: Demo_1
-        uses: ./
         with:
           Flag: '-e'
           Hash: 'dee074d84865621980b0140a87b13e16b2222449'
-          Log_status: 'nothing to commit, working tree clean'
+          Log_status: ${{ steps.Get_the_status.outputs.stdout }}
+
       - name: Get the output Encrypted 1
         run: |
           echo "${{ steps.Demo_1.outputs.Encrypted }}"
-          echo "${{ steps.Demo_1.outputs.Checked }}" 
