@@ -21,7 +21,7 @@ jobs:
   
       - name: execution-checker-1
         uses: moh-alqadi-op/execution-checker@v4
-        id: Demo
+        id: execution-checker-1
         with:
           Flag: '-c'
           Hash: ${{ steps.Set_hash_ID.outputs.HASH_ID }}
