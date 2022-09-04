@@ -3,6 +3,11 @@
 hash="$1"
 echo "$2" > status.txt
 tag="$(tail -n 1 status.txt)"
+echo "++++++++++++++++++++++++++++"
+echo "$tag"
+echo "++++++++++++++++++++++++++++"
+echo "$2"
+echo "++++++++++++++++++++++++++++"
 
 to_pass="nothing to commit, working tree clean"
 
