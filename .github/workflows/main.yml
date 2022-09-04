@@ -36,17 +36,18 @@ jobs:
         uses: mathiasvr/command-output@v1
         with:
           run: |
-            git log --notes=verified --format="%H" -1 ${{ steps.execution_checker_1.outputs.Encrypted }}
+            git notes --ref verified add -f -m "${{ steps.execution_checker_1.outputs.Encrypted }}"
 
       - name: execution-checker-1
         uses: moh-alqadi-op/execution-checker@v3
         id: Demo
         with:
           Flag: '-c'
-          Hash: 'dee074d84865621980b0140a87b13e16b2222449'
+          Hash: ${{ steps.Get_hash_ID.outputs.stdout }}
           Encrypted_Hash: 'U2FsdGVkX18j9vw7jCERkAplP5Im9mNbxwXtBc6vAm7a8QaLFrxBaCMGfyanKnns AH1K0iJKVRoowM/jHL8IYA=='
 
       - name: Get the output Encrypted
         run: |
+          echo "notes: $( git log --notes=verified --format="%H" -1 ${{ steps.Get_hash_ID.outputs.stdout }})"
           echo "${{ steps.Demo.outputs.Checked }}"
   
