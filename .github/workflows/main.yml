@@ -13,7 +13,7 @@ jobs:
         with:
           Flag: '-c'
           Hash: 'dee074d84865621980b0140a87b13e16b2222449'
-          Encrypted_Hash: '�����:O֧����d܊��:�c��)/�U��{gg��5�π`\�� ��L�I�~�ke6���'
+          Encrypted_Hash: 'U2FsdGVkX1/V/1m+OMjPjx+xiP60Ld0maoHzHNjgqvWxX5IkB0TzEXmX6MwvBocI c47sXLhWNmbs/mzHaCpmfA=='
       - name: Get the output Encrypted
         run: |
           echo "${{ steps.Demo.inputs.Flag }}"

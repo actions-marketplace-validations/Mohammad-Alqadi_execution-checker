@@ -1,6 +1,5 @@
 #!/bin/sh -l
 hash="$2"
-status="$3"
 
 check_if_match() {
     checked=$(sh bin/check.sh "$1" "$2")
@@ -15,10 +14,10 @@ encrypt_given_hash() {
 while getopts "ec:" opt; do
   case $opt in
     c)
-      check_if_match "$hash" "$4"
+      check_if_match "$hash" "$3"
       ;;
     e)
-      encrypt_given_hash "$hash" "$status"
+      encrypt_given_hash "$hash" "$3"
       ;;  
     \?)
       echo "Invalid option passed! available options are '-c or -e'"
