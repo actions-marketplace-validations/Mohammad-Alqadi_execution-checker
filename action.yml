@@ -16,7 +16,7 @@ inputs:
     Log_status:
       description: 'The status of git'
       required: false
-    Encrypted:
+    Encrypted_Hash:
       description: 'The Encrypted hash ID'
       required: false  
 outputs:

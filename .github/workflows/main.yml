@@ -13,9 +13,12 @@ jobs:
         with:
           Flag: '-c'
           Hash: 'dee074d84865621980b0140a87b13e16b2222449'
-          Encrypted: '�����:O֧����d܊��:�c��)/�U��{gg��5�π`\�� ��L�I�~�ke6���'
+          Encrypted_Hash: '�����:O֧����d܊��:�c��)/�U��{gg��5�π`\�� ��L�I�~�ke6���'
       - name: Get the output Encrypted
         run: |
+          echo "${{ steps.Demo.inputs.Flag }}"
+          echo "${{ steps.Demo.inputs.Hash }}"
+          echo "${{ steps.Demo.inputs.Encrypted_Hash }}"
           echo "${{ steps.Demo.outputs.Encrypted }}"
           echo "${{ steps.Demo.outputs.Checked }}"
       - name: Demo_1
