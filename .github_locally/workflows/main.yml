@@ -24,7 +24,7 @@ jobs:
           echo "::set-output name=HASH_ID::$( git log --format="%H" -n 1)"
       
       - name: execution-checker 1
-        uses: moh-alqadi-op/execution-checker@v4
+        uses: ./
         id: execution_checker_1
         with:
           Flag: '-e'
