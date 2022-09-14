@@ -39,6 +39,7 @@ jobs:
   Check_locally_execution:
     runs-on: ubuntu-latest
     name: Check_locally_execution
+    needs: Demo_job
     steps:
       - name: Checkout
         id: checkout
