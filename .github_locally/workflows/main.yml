@@ -24,7 +24,7 @@ jobs:
           echo "::set-output name=HASH_ID::$( git log --format="%H" -n 1)"
       
       - name: execution-checker 1
-        uses: ./
+        uses: moh-alqadi-op/execution-checker@v4
         id: execution_checker_1
         with:
           Flag: '-e'
@@ -57,7 +57,7 @@ jobs:
           echo "::set-output name=NOTES::$( git notes show ${{ steps.Get_hash_ID.outputs.HASH_ID }})"
   
       - name: execution-checker-1
-        uses: ./
+        uses: moh-alqadi-op/execution-checker@v4
         id: execution-checker-1
         with:
           Flag: '-c'
