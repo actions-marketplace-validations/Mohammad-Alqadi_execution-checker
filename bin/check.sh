@@ -1,8 +1,8 @@
 #!/bin/bash
 
 hash="$1"
-
-decrypted=$(sh bin/decrypt.sh "$2")
+echo -e "$2" >> decrypt.txt
+decrypted=$(sh bin/decrypt.sh)
 
 passed=""
 if [ "$hash" = "$decrypted" ]; then

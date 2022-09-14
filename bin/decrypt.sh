@@ -1,4 +1,5 @@
 #!/bin/bash
 
-decrypt=$(echo "$1" | openssl aes-256-cbc -d -a -pass pass:CDS-Global -pbkdf2 -iter 100000)
-echo $decrypt
+echo -e "$1" >> decrypt.txt
+decrypted=$(openssl aes-256-cbc -d -a -pass pass:CDS-Global -pbkdf2 -iter 100000 < decrypt.txt)
+rm -f decrypt.txt
