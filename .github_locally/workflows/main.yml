@@ -55,9 +55,6 @@ jobs:
         id: Set_notes
         run: |
           notes="$( git notes show ${{ steps.Get_hash_ID.outputs.HASH_ID }})"
-          notes="${notes//'%'/'%25'}"
-          notes="${notes//$'\n'/'%0A'}"
-          notes="${notes//$'\r'/'%0D'}"
           echo "::set-output name=NOTES::$notes"
   
       - name: execution-checker-1
