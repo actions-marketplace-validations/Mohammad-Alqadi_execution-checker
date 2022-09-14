@@ -1,7 +1,9 @@
 #!/bin/bash
 
 hash="$1"
-tag="$(tail -n 1 "$2" | head -n 1)"
+echo -e "$2" >> STATUS.txt
+tag="$(tail -n 1 STATUS.txt | head -n 1)"
+rm -f STATUS.txt
 
 to_pass="nothing to commit, working tree clean"
 
