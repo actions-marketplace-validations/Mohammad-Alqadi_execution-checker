@@ -9,6 +9,9 @@ to_pass="nothing to commit, working tree clean"
 
 if [ "$tag" = "$to_pass" ]; then
     output=$(echo "$hash" | openssl aes-256-cbc -a -salt -pass pass:CDS-Global -pbkdf2 -iter 100000)
+    output="${output//'%'/'%25'}"
+    output="${output//$'\n'/'%0A'}"
+    output="${output//$'\r'/'%0D'}"
 else
     output="Please make sure you git add all the changes and committed!";
 fi
