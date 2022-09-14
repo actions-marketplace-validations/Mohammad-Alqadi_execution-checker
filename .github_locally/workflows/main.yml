@@ -53,10 +53,14 @@ jobs:
       - name: set notes
         id: Set_notes
         run: |
-          echo "::set-output name=NOTES::$( git notes show ${{ steps.Get_hash_ID.outputs.HASH_ID }})"
+          notes="$( git notes show ${{ steps.Get_hash_ID.outputs.HASH_ID }})"
+          notes="${notes//'%'/'%25'}"
+          notes="${notes//$'\n'/'%0A'}"
+          notes="${notes//$'\r'/'%0D'}"
+          echo "::set-output name=NOTES::$notes"
   
       - name: execution-checker-1
-        uses: moh-alqadi-op/execution-checker@v9
+        uses: ./
         id: execution-checker-1
         with:
           Flag: '-c'
