@@ -35,3 +35,30 @@ jobs:
         id: Local_hash_ID
         run: |
           git notes add -f -m "${{ steps.execution_checker_1.outputs.Encrypted }}"
+
+  Check_locally_execution:
+    runs-on: ubuntu-latest
+    name: Check_locally_execution
+    steps:
+      - name: Checkout
+        id: checkout
+        uses: actions/checkout@v2
+             
+      - name: Get_hash_ID
+        id: Get_hash_ID
+        run: |
+          git config --global --add safe.directory '*'
+          echo "::set-output name=HASH_ID::$( git log --format="%H" -n 1)"
+      
+      - name: set notes
+        id: Set_notes
+        run: |
+          echo "::set-output name=NOTES::$( git notes show ${{ steps.Get_hash_ID.outputs.HASH_ID }})"
+  
+      - name: execution-checker-1
+        uses: moh-alqadi-op/execution-checker@v9
+        id: execution-checker-1
+        with:
+          Flag: '-c'
+          Hash: ${{ steps.Get_hash_ID.outputs.HASH_ID }}
+          Encrypted_Hash: '${{ steps.Set_notes.outputs.NOTES }}'
