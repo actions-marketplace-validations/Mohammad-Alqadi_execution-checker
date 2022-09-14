@@ -7,7 +7,7 @@ check_if_match() {
 }
 
 encrypt_given_hash() { 
-    encrypted=$(sh /bin/encrypt.sh "$1" "$2")
+    encrypted="$(sh /bin/encrypt.sh "$1" "$2")"
     echo "::set-output name=Encrypted::"$encrypted""
 }
 

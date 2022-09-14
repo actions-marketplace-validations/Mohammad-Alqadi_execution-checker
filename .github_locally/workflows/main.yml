@@ -34,12 +34,7 @@ jobs:
       - name: Local_hash_ID
         id: Local_hash_ID
         run: |
-          note="${{ steps.execution_checker_1.outputs.Encrypted }}"
-          echo $note
-          note="${note//'%'/'%25'}"
-          note="${note//$'\n'/'%0A'}"
-          note="${note//$'\r'/'%0D'}"
-          git notes add -f -m "$note"
+          git notes add -f -m "${{ steps.execution_checker_1.outputs.Encrypted }}"
 
   Check_locally_execution:
     runs-on: ubuntu-latest
@@ -59,8 +54,7 @@ jobs:
       - name: set notes
         id: Set_notes
         run: |
-          notes="$( git notes show ${{ steps.Get_hash_ID.outputs.HASH_ID }})"
-          echo "::set-output name=NOTES::$notes"
+          echo "::set-output name=NOTES::$( git notes show ${{ steps.Get_hash_ID.outputs.HASH_ID }})"
   
       - name: execution-checker-1
         uses: ./
