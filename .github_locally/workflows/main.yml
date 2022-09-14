@@ -34,7 +34,11 @@ jobs:
       - name: Local_hash_ID
         id: Local_hash_ID
         run: |
-          git notes add -f -m "${{ steps.execution_checker_1.outputs.Encrypted }}"
+          note="${{ steps.execution_checker_1.outputs.Encrypted }}"
+          note="${note//'%'/'%25'}"
+          note="${note//$'\n'/'%0A'}"
+          note="${note//$'\r'/'%0D'}"
+          git notes add -f -m "$note"
 
   Check_locally_execution:
     runs-on: ubuntu-latest
