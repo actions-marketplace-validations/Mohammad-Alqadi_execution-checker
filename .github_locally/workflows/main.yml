@@ -24,12 +24,12 @@ jobs:
           echo "::set-output name=HASH_ID::$( git log --format="%H" -n 1)"
       
       - name: execution-checker 1
-        uses: moh-alqadi-op/execution-checker@v4
+        uses: ./
         id: execution_checker_1
         with:
           Flag: '-e'
-          Hash: "${{ steps.Set_hash_ID.outputs.HASH_ID }}"
-          Log_status: '${{ steps.set_status.outputs.STATUS }}'
+          Hash: ${{ steps.Set_hash_ID.outputs.HASH_ID }}
+          Log_status: 'nothing to commit, working tree clean'
       
       - name: Local_hash_ID
         id: Local_hash_ID
@@ -57,9 +57,9 @@ jobs:
           echo "::set-output name=NOTES::$( git notes show ${{ steps.Get_hash_ID.outputs.HASH_ID }})"
   
       - name: execution-checker-1
-        uses: moh-alqadi-op/execution-checker@v4
+        uses: ./
         id: execution-checker-1
         with:
           Flag: '-c'
-          Hash: ${{ steps.Get_hash_ID.outputs.HASH_ID }}
-          Encrypted_Hash: '${{ steps.Set_notes.outputs.NOTES }}'
+          Hash: "${{ steps.Get_hash_ID.outputs.HASH_ID }}"
+          Encrypted_Hash: "${{ steps.Set_notes.outputs.NOTES }}"

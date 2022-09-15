@@ -1,11 +1,11 @@
-#!/bin/bash
+#!/bin/sh -l
 
 hash="$1"
-echo -e "$2" >> decrypt.txt
-decrypted=$(sh bin/decrypt.sh)
-
+sh bin/decrypt.sh "$2"
+decrypted_hash="$(cat decrypt.bin)"
+rm -f decrypt.bin
 passed=""
-if [ "$hash" = "$decrypted" ]; then
+if [ "$hash" = "$decrypted_hash" ]; then
     passed="True"
 else
     passed="False";
