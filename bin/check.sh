@@ -1,7 +1,7 @@
 #!/bin/sh -l
 
 hash="$1"
-sh bin/decrypt.sh "$2"
+sh /bin/decrypt.sh "$2"
 decrypted_hash="$(cat decrypt.bin)"
 rm -f decrypt.bin
 passed=""
