@@ -1,4 +1,4 @@
-FROM arm64v8/alpine:3.14
+FROM amd64/alpine
 
 RUN apk add --no-cache bash
 RUN apk add coreutils
